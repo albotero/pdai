@@ -1,12 +1,11 @@
-import { useContext } from "react"
-import { StyleSheet, View } from "react-native"
+import { Dispatch, SetStateAction, useContext, useState } from "react"
+import { StyleSheet } from "react-native"
 import Animated, { FadeIn } from "react-native-reanimated"
 import Rive, { Fit } from "rive-react-native"
 
 import { AppContext, AppContextType } from "../../../App"
 import i18n, { Languages } from "../../common/localization"
 import { Palette } from "../../common/palette"
-import Header, { HeaderButton } from "../../components/header/header"
 
 import * as S from "./styles"
 
@@ -15,13 +14,23 @@ interface LanguageButtonProps {
     langName: string
     iso: string
     selected: boolean
+    setState: Dispatch<SetStateAction<boolean>>
+    state: boolean
 }
 
-function LanguageButton({ flag, langName, iso, selected }: LanguageButtonProps) {
+function LanguageButton({ flag, langName, iso, selected, setState, state }: LanguageButtonProps) {
     const { changeLang: changeLang } = useContext(AppContext) as AppContextType
 
     return (
-        <S.LanguageButton onPress={() => changeLang && changeLang(iso)} style={selected && Style.selected}>
+        <S.LanguageButton
+            onPress={() => {
+                if (changeLang) {
+                    changeLang(iso)
+                    setState(!state)
+                }
+            }}
+            style={selected && Style.selected}
+        >
             <S.LanguageText>
                 {flag}&nbsp;&nbsp;{langName}
             </S.LanguageText>
@@ -30,22 +39,10 @@ function LanguageButton({ flag, langName, iso, selected }: LanguageButtonProps) 
 }
 
 export default function Lang(): JSX.Element {
-    const { setShowLang: setShowLang } = useContext(AppContext) as AppContextType
+    const [state, setState] = useState<boolean>(false)
 
     return (
         <S.Container>
-            <Header
-                title={i18n.t("selectLang")}
-                buttons={[
-                    <HeaderButton
-                        key="return"
-                        text={"\u1438"}
-                        textSize={18}
-                        action={() => setShowLang && setShowLang(false)}
-                    />,
-                ]}
-                style={{ justifyContent: "flex-start" }}
-            />
             <Animated.View entering={FadeIn.duration(2000)} style={{ flex: 1 }}>
                 <S.Background>
                     <Rive
@@ -60,17 +57,18 @@ export default function Lang(): JSX.Element {
                     <S.Grid>
                         {Object.keys(Languages).map((iso: string) => {
                             const data = i18n.getDataByLanguage(iso)
-                            return data ? (
-                                <LanguageButton
-                                    key={iso}
-                                    flag={data.translation.languageFlag}
-                                    langName={data.translation.languageName}
-                                    iso={iso}
-                                    selected={i18n.language == iso}
-                                />
-                            ) : (
-                                <></>
-                            )
+                            if (data)
+                                return (
+                                    <LanguageButton
+                                        key={iso}
+                                        flag={data.translation.languageFlag}
+                                        langName={data.translation.languageName}
+                                        iso={iso}
+                                        selected={i18n.language == iso}
+                                        setState={setState}
+                                        state={state}
+                                    />
+                                )
                         })}
                     </S.Grid>
                 </S.ScrollLanguages>

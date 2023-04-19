@@ -9,6 +9,7 @@ export const Container = styled(View)`
     gap: 3px;
     background-color: ${Palette.BackColorApp};
 `
+
 export const Body = styled(Animated.View)`
     flex: 1;
 `
