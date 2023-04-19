@@ -14,7 +14,6 @@ export const Header = styled(View)`
     padding-horizontal: 10px;
     border-radius: 5px;
     flex: 1;
-    flex-direction: row;
     align-items: center;
     height: 40px;
 `
@@ -27,11 +26,9 @@ export const Title = styled(Text)`
     font-weight: bold;
     text-transform: capitalize;
 `
-export const Score = styled(View)``
 
 export const ScoreText = styled(Text)`
     color: white;
-    text-align: right;
     font-size: 12px;
     font-variant: small-caps;
     font-weight: bold;

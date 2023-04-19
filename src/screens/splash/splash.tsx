@@ -15,7 +15,7 @@ export default function Splash({ setIsLoading }: SplashProps): JSX.Element {
                 resourceName="splash"
                 artboardName={"PDAI 1"}
                 stateMachineName={"pdai"}
-                fit={Fit.ScaleDown}
+                fit={Fit.FitWidth}
                 style={SplashStyle.animation}
             />
         </S.Container>

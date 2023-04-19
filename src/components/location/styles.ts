@@ -16,12 +16,10 @@ export const HeaderContainer = styled(Animated.View)`
 `
 
 export const Header = styled(TouchableOpacity)`
-    flex-direction: row;
     padding: 5px 10px;
     justify-content: space-between;
     align-items: center;
     z-index: 99;
-    background-color: "green";
 `
 
 export const Title = styled(Text)`
@@ -41,7 +39,6 @@ export const Summary = styled(View)`
 export const SummaryText = styled(Text)`
     color: ${Palette.HeaderColor};
     font-size: 11px;
-    text-align: right;
 `
 
 export const SummarySubtitle = styled(Text)`

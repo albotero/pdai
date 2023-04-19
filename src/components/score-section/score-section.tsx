@@ -1,6 +1,7 @@
 import { useContext } from "react"
+import { View } from "react-native"
 
-import i18n from "../../common/localization"
+import i18n, { Rtl } from "../../common/localization"
 import { PdaiContextType, PdaiDataInterface, SelectedLocations } from "../../screens/pdai/context"
 import { PdaiContext } from "../../screens/pdai/pdai"
 import Location from "../location/location"
@@ -11,7 +12,7 @@ interface ScoreSectionProps {
 }
 
 export default function ScoreSection({ section }: ScoreSectionProps): JSX.Element {
-    const { pdaiData, updatePdaiData } = useContext(PdaiContext) as PdaiContextType
+    const { pdaiData } = useContext(PdaiContext) as PdaiContextType
     const selectedLocation = SelectedLocations[section]
     const sectionData = pdaiData.filter((data: PdaiDataInterface) => data.section == section)
 
@@ -32,18 +33,22 @@ export default function ScoreSection({ section }: ScoreSectionProps): JSX.Elemen
 
     return (
         <S.Container>
-            <S.Header>
+            <S.Header style={{ flexDirection: Rtl() ? "row-reverse" : "row" }}>
                 <S.Title>{i18n.t(section)}</S.Title>
-                <S.Score>
-                    <S.ScoreText>
-                        {i18n.t("activity")}: {calcScore("activity")}/{sectionData.length * 10}
+                <View>
+                    <S.ScoreText style={{ textAlign: Rtl() ? "left" : "right" }}>
+                        {Rtl()
+                            ? `${i18n.t("activity")}: ${sectionData.length * 10}/${calcScore("activity")}`
+                            : `${i18n.t("activity")}: ${calcScore("activity")}/${sectionData.length * 10}`}
                     </S.ScoreText>
                     {sectionData[0].damage && (
-                        <S.ScoreText>
-                            {i18n.t("damage")}: {calcScore("damage")}/{sectionData.length}
+                        <S.ScoreText style={{ textAlign: Rtl() ? "left" : "right" }}>
+                            {Rtl()
+                                ? `${i18n.t("damage")}: ${sectionData.length * 10}/${calcScore("damage")}`
+                                : `${i18n.t("damage")}: ${calcScore("damage")}/${sectionData.length * 10}`}
                         </S.ScoreText>
                     )}
-                </S.Score>
+                </View>
             </S.Header>
             <S.Locations>
                 {sectionData.map((data: PdaiDataInterface) => (

@@ -73,7 +73,7 @@ export const PdaiSections: PdaiDataInterface[] = [
     { id: 21, section: "mucousMembrane", location: "tongue", activity: mucousMembraneAct, selAct: 0 },
     { id: 22, section: "mucousMembrane", location: "floorOfMouth", activity: mucousMembraneAct, selAct: 0 },
     { id: 23, section: "mucousMembrane", location: "labialMucosa", activity: mucousMembraneAct, selAct: 0 },
-    { id: 24, section: "mucousMembrane", location: "posteriorPharinx", activity: mucousMembraneAct, selAct: 0 },
+    { id: 24, section: "mucousMembrane", location: "posteriorPharynx", activity: mucousMembraneAct, selAct: 0 },
     { id: 25, section: "mucousMembrane", location: "anogenital", activity: mucousMembraneAct, selAct: 0 },
 ]
 

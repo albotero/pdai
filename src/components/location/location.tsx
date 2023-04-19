@@ -1,17 +1,16 @@
 import { useContext, useEffect, useState } from "react"
 import { TouchableOpacity, View } from "react-native"
-import Animated, {
+import {
     Easing,
     interpolate,
     interpolateColor,
     useAnimatedStyle,
-    useDerivedValue,
     useSharedValue,
     withTiming,
 } from "react-native-reanimated"
 
 import { CapitalizeSentence, FirstLetter } from "../../common/functions"
-import i18n from "../../common/localization"
+import i18n, { Rtl } from "../../common/localization"
 import { Palette } from "../../common/palette"
 import { PdaiContextType, PdaiData, PdaiDataInterface, SelectedLocations } from "../../screens/pdai/context"
 import { PdaiContext } from "../../screens/pdai/pdai"
@@ -58,7 +57,7 @@ export default function Location({ data, visible }: LocationProps): JSX.Element 
         if (bodyHeight > 0)
             return {
                 ...data,
-                height: interpolate(progressAnimation.value, [0, 1], [0, bodyHeight]),
+                height: interpolate(progressAnimation.value, [0, 1], [0, bodyHeight + 10]),
             }
         return data
     })
@@ -71,8 +70,8 @@ export default function Location({ data, visible }: LocationProps): JSX.Element 
     return (
         <S.Container>
             <S.HeaderContainer style={headerAnimatedStyle}>
-                <S.Header onPress={updateVisibility}>
-                    <S.Title>{i18n.t(data.location)}</S.Title>
+                <S.Header style={{ flexDirection: Rtl() ? "row-reverse" : "row" }} onPress={updateVisibility}>
+                    <S.Title style={{ textAlign: Rtl() ? "right" : "left" }}>{i18n.t(data.location)}</S.Title>
                     <S.Summary>
                         {data.selAct > 0 && (
                             <Summary
@@ -122,7 +121,7 @@ interface SummaryProps {
 
 function Summary({ property, value }: SummaryProps): JSX.Element {
     return (
-        <S.SummaryText>
+        <S.SummaryText style={{ textAlign: Rtl() ? "left" : "right" }}>
             <S.SummarySubtitle>{FirstLetter(i18n.t(property))}: </S.SummarySubtitle>
             {i18n.t(value).toLowerCase()}
         </S.SummaryText>
