@@ -4,12 +4,12 @@ import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackNavigationOptions } from "@react-navigation/native-stack"
 import styled from "styled-components"
 
-import i18n, { GetLanguage, SetLanguage } from "./src/common/localization"
-import { Palette, TextShadow } from "./src/common/palette"
-import About from "./src/screens/about"
-import Lang from "./src/screens/lang"
-import Pdai from "./src/screens/pdai"
-import Splash from "./src/screens/splash"
+import i18n, { GetLanguage, SetLanguage } from "@common/localization"
+import { Palette, TextShadow } from "@common/palette"
+import About from "@screens/about"
+import Lang from "@screens/lang"
+import Pdai from "@screens/pdai"
+import Splash from "@screens/splash"
 
 export type AppContextType = {
     changeLang?: (iso: string) => void

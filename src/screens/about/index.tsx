@@ -1,8 +1,8 @@
 import { Linking } from "react-native"
 import Animated, { FadeIn } from "react-native-reanimated"
 
-import i18n, { Rtl } from "../../common/localization"
-import * as Svg from "../../common/svg"
+import i18n, { Rtl } from "@common/localization"
+import * as Svg from "@common/svg"
 import * as S from "./styles"
 
 type Social = {

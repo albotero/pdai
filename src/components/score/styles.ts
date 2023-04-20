@@ -2,7 +2,7 @@ import { Text, TouchableOpacity } from "react-native"
 import Animated from "react-native-reanimated"
 import styled from "styled-components"
 
-import { Palette, TextShadow } from "../../common/palette"
+import { Palette, TextShadow } from "@common/palette"
 
 export const Container = styled(Animated.View)`
     padding: 10px 0;

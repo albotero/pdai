@@ -2,10 +2,10 @@ import { useContext, useEffect } from "react"
 import { Alert } from "react-native"
 import { Easing, interpolateColor, useAnimatedStyle, useSharedValue, withTiming } from "react-native-reanimated"
 
-import { CapitalizeSentence } from "../../common/functions"
-import i18n, { Rtl } from "../../common/localization"
-import { PdaiContextType } from "../../screens/pdai/context"
-import { PdaiContext } from "../../screens/pdai"
+import { CapitalizeSentence } from "@common/functions"
+import i18n, { Rtl } from "@common/localization"
+import { PdaiContextType } from "@screens/pdai/context"
+import { PdaiContext } from "@screens/pdai"
 import * as S from "./styles"
 
 /**

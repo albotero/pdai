@@ -2,7 +2,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import Animated from "react-native-reanimated"
 import styled from "styled-components"
 
-import { Palette } from "../../common/palette"
+import { Palette } from "@common/palette"
 
 export const Container = styled(View)`
     overflow: hidden;

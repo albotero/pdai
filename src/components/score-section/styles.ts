@@ -1,7 +1,7 @@
 import { Text, View } from "react-native"
 import styled from "styled-components"
 
-import { Palette } from "../../common/palette"
+import { Palette } from "@common/palette"
 
 export const Container = styled(View)`
     margin-vertical: 20px;

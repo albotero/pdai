@@ -1,9 +1,9 @@
 import { useContext } from "react"
 import { View } from "react-native"
 
-import i18n, { Rtl } from "../../common/localization"
-import { PdaiContextType, PdaiDataInterface, SelectedLocations } from "../../screens/pdai/context"
-import { PdaiContext } from "../../screens/pdai"
+import i18n, { Rtl } from "@common/localization"
+import { PdaiContextType, PdaiDataInterface, SelectedLocations } from "@screens/pdai/context"
+import { PdaiContext } from "@screens/pdai"
 import Location from "../location"
 import * as S from "./styles"
 

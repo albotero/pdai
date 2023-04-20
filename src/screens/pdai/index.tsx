@@ -4,8 +4,8 @@ import { ScrollView } from "react-native"
 import { FadeIn } from "react-native-reanimated"
 import { useFocusEffect } from "@react-navigation/native"
 
-import Score from "../../components/score"
-import ScoreSection from "../../components/score-section"
+import Score from "@components/score"
+import ScoreSection from "@components/score-section"
 import { PdaiContextType, PdaiDataInterface, PdaiSections, SelectedLocations } from "./context"
 import * as S from "./styles"
 

@@ -1,7 +1,7 @@
 import { ScrollView, Text, TouchableOpacity, View } from "react-native"
 import styled from "styled-components"
 
-import { Palette, Shadow } from "../../common/palette"
+import { Palette, Shadow } from "@common/palette"
 
 export const Container = styled(View)`
     flex: 1;

@@ -2,7 +2,7 @@ import { View } from "react-native"
 import Animated from "react-native-reanimated"
 import styled from "styled-components"
 
-import { Palette } from "../../common/palette"
+import { Palette } from "@common/palette"
 
 export const Container = styled(View)`
     flex: 1;
