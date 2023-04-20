@@ -31,3 +31,8 @@ export const Score = styled(Text)`
 export const ClearButton = styled(TouchableOpacity)`
     margin: 5px;
 `
+
+export const ButtonText = styled(Text)`
+    font-size: 20px;
+    ${TextShadow()}
+`

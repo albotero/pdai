@@ -49,7 +49,7 @@ export default function Score(): JSX.Element {
             <S.Score>/</S.Score>
             <S.Score>263</S.Score>
             <S.ClearButton onPress={clearData}>
-                <S.Score>{"\u{1F5D1}"}</S.Score>
+                <S.ButtonText>{"\u{1F5D1}"}</S.ButtonText>
             </S.ClearButton>
         </S.Container>
     )

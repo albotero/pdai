@@ -6,6 +6,7 @@ import styled from "styled-components"
 
 import i18n, { GetLanguage, SetLanguage } from "./src/common/localization"
 import { Palette, TextShadow } from "./src/common/palette"
+import About from "./src/screens/about"
 import Lang from "./src/screens/lang"
 import Pdai from "./src/screens/pdai"
 import Splash from "./src/screens/splash"
@@ -51,6 +52,7 @@ export default function App(): JSX.Element {
                         })}
                     />
                     <Stack.Screen name="ChangeLang" component={Lang} options={Options("selectLang")} />
+                    <Stack.Screen name="About" component={About} options={Options("acknowledgments")} />
                 </Stack.Navigator>
             </NavigationContainer>
         </AppContext.Provider>
@@ -71,7 +73,7 @@ const PdaiHeaderButtons = (navigation: any): NativeStackNavigationOptions => {
     return {
         headerRight: () => (
             <S.HeaderButtonCont>
-                <S.HeaderButton onPress={() => {}}>
+                <S.HeaderButton onPress={() => navigation.navigate("About")}>
                     <S.HeaderButtonText style={{ fontSize: 16 }}>{"\u{1F516}"}</S.HeaderButtonText>
                 </S.HeaderButton>
                 <S.HeaderButton onPress={() => navigation.navigate("ChangeLang")}>
