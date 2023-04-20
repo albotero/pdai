@@ -39,6 +39,7 @@ export const Summary = styled(View)`
 export const SummaryText = styled(Text)`
     color: ${Palette.HeaderColor};
     font-size: 11px;
+    text-transform: lowercase;
 `
 
 export const SummarySubtitle = styled(Text)`

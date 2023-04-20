@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { Palette, TextShadow } from "../../common/palette"
 
 export const Container = styled(Animated.View)`
-    padding: 20px 10px 25px 20px;
+    padding: 10px 0;
     align-items: center;
     justify-content: center;
     gap: 5px;
