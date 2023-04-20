@@ -5,7 +5,7 @@ import { Easing, interpolateColor, useAnimatedStyle, useSharedValue, withTiming 
 import { CapitalizeSentence } from "../../common/functions"
 import i18n, { Rtl } from "../../common/localization"
 import { PdaiContextType } from "../../screens/pdai/context"
-import { PdaiContext } from "../../screens/pdai/pdai"
+import { PdaiContext } from "../../screens/pdai"
 import * as S from "./styles"
 
 /**

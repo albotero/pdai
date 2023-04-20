@@ -5,10 +5,10 @@ import { createNativeStackNavigator, NativeStackNavigationOptions } from "@react
 import styled from "styled-components"
 
 import i18n, { GetLanguage, SetLanguage } from "./src/common/localization"
-import Lang from "./src/screens/lang/lang"
-import Pdai from "./src/screens/pdai/pdai"
-import Splash from "./src/screens/splash/splash"
 import { Palette, TextShadow } from "./src/common/palette"
+import Lang from "./src/screens/lang"
+import Pdai from "./src/screens/pdai"
+import Splash from "./src/screens/splash"
 
 export type AppContextType = {
     changeLang?: (iso: string) => void
@@ -19,6 +19,7 @@ export const AppContext = createContext<AppContextType | null>(null)
 export type RootStackParamList = {
     PDAI: undefined
     ChangeLang: undefined
+    About: undefined
 }
 
 const Stack = createNativeStackNavigator<RootStackParamList>()
