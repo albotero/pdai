@@ -47,6 +47,7 @@ export interface PdaiDataInterface {
 export type PdaiContextType = {
     pdaiData: PdaiDataInterface[]
     updatePdaiData: (data: PdaiDataInterface) => void
+    resetPdaiData?: () => void
 }
 
 export const PdaiSections: PdaiDataInterface[] = [

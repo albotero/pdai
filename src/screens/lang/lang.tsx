@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useContext, useState } from "react"
+import { useContext, useState } from "react"
 import { StyleSheet } from "react-native"
 import Animated, { FadeIn } from "react-native-reanimated"
 import Rive, { Fit } from "rive-react-native"
@@ -12,25 +12,13 @@ import * as S from "./styles"
 interface LanguageButtonProps {
     flag: string
     langName: string
-    iso: string
     selected: boolean
-    setState: Dispatch<SetStateAction<boolean>>
-    state: boolean
+    updateLang: () => void
 }
 
-function LanguageButton({ flag, langName, iso, selected, setState, state }: LanguageButtonProps) {
-    const { changeLang: changeLang } = useContext(AppContext) as AppContextType
-
+function LanguageButton({ flag, langName, selected, updateLang }: LanguageButtonProps) {
     return (
-        <S.LanguageButton
-            onPress={() => {
-                if (changeLang) {
-                    changeLang(iso)
-                    setState(!state)
-                }
-            }}
-            style={selected && Style.selected}
-        >
+        <S.LanguageButton onPress={updateLang} style={selected && Style.selected}>
             <S.LanguageText>
                 {flag}&nbsp;&nbsp;{langName}
             </S.LanguageText>
@@ -40,6 +28,12 @@ function LanguageButton({ flag, langName, iso, selected, setState, state }: Lang
 
 export default function Lang(): JSX.Element {
     const [state, setState] = useState<boolean>(false)
+    const { changeLang: changeLang } = useContext(AppContext) as AppContextType
+
+    const updateLang = (iso: string) => {
+        if (changeLang) changeLang(iso)
+        setState(!state)
+    }
 
     return (
         <S.Container>
@@ -63,10 +57,8 @@ export default function Lang(): JSX.Element {
                                         key={iso}
                                         flag={data.translation.languageFlag}
                                         langName={data.translation.languageName}
-                                        iso={iso}
                                         selected={i18n.language == iso}
-                                        setState={setState}
-                                        state={state}
+                                        updateLang={() => updateLang(iso)}
                                     />
                                 )
                         })}

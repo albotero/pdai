@@ -6,7 +6,7 @@ import { useFocusEffect } from "@react-navigation/native"
 
 import Score from "../../components/score/score"
 import ScoreSection from "../../components/score-section/score-section"
-import { PdaiContextType, PdaiDataInterface, PdaiSections } from "./context"
+import { PdaiContextType, PdaiDataInterface, PdaiSections, SelectedLocations } from "./context"
 import * as S from "./styles"
 
 export const PdaiContext = createContext<PdaiContextType | null>(null)
@@ -24,27 +24,27 @@ export default function Pdai(): JSX.Element {
         })
     }
 
-    const calcScore = () => {
-        let score: number = 0
-        for (const data of pdaiData) {
-            score += data.selAct
-            score += data.selDam || 0
-        }
-        return score
+    const resetPdaiData = () => {
+        Object.keys(SelectedLocations).map((key: string) => (SelectedLocations[key] = null))
+        pdaiData.map((data: PdaiDataInterface) => {
+            data.selAct = 0
+            if (data.selDam) data.selDam = 0
+        })
+        setPdaiData(PdaiSections)
     }
 
     useFocusEffect(React.useCallback(() => setPdaiData([...pdaiData]), []))
 
     return (
         <S.Container>
-            <PdaiContext.Provider value={{ pdaiData, updatePdaiData }}>
+            <PdaiContext.Provider value={{ pdaiData, updatePdaiData, resetPdaiData }}>
                 <S.Body entering={FadeIn.duration(2000)}>
                     <ScrollView style={{ padding: 5 }}>
                         <ScoreSection section="skin" />
                         <ScoreSection section="scalp" />
                         <ScoreSection section="mucousMembrane" />
                     </ScrollView>
-                    <Score score={calcScore()} />
+                    <Score />
                 </S.Body>
             </PdaiContext.Provider>
         </S.Container>

@@ -1,3 +1,4 @@
+import { Text, TouchableOpacity } from "react-native"
 import Animated from "react-native-reanimated"
 import styled from "styled-components"
 
@@ -10,7 +11,7 @@ export const Container = styled(Animated.View)`
     gap: 5px;
 `
 
-export const Title = styled(Animated.Text)`
+export const Title = styled(Text)`
     color: ${Palette.BackColorApp};
     font-size: 18px;
     font-variant: small-caps;
@@ -19,10 +20,14 @@ export const Title = styled(Animated.Text)`
     ${TextShadow()}
 `
 
-export const Score = styled(Animated.Text)`
+export const Score = styled(Text)`
     color: ${Palette.BackColorApp};
     font-size: 24px;
     font-variant: oldstyle-nums;
     font-weight: bold;
     ${TextShadow()}
+`
+
+export const ClearButton = styled(TouchableOpacity)`
+    margin: 5px;
 `

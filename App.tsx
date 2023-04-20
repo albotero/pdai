@@ -17,7 +17,7 @@ export type AppContextType = {
 export const AppContext = createContext<AppContextType | null>(null)
 
 export type RootStackParamList = {
-    PDAI: { signalClear: boolean }
+    PDAI: undefined
     ChangeLang: undefined
 }
 
@@ -57,13 +57,13 @@ export default function App(): JSX.Element {
 }
 
 const Options = (titleKey: string): NativeStackNavigationOptions => ({
-    title: i18n.t(titleKey).toString(),
     headerStyle: {
         backgroundColor: Palette.NavigationColor,
     },
-    headerTintColor: Palette.HeaderColor,
+    headerBackTitleVisible: false,
+    headerTitle: () => <S.HeaderTitle>{i18n.t(titleKey)}</S.HeaderTitle>,
+    headerShadowVisible: true,
     headerTitleAlign: "center",
-    headerTitleStyle: { fontWeight: "bold" },
 })
 
 const PdaiHeaderButtons = (navigation: any): NativeStackNavigationOptions => {
@@ -82,6 +82,14 @@ const PdaiHeaderButtons = (navigation: any): NativeStackNavigationOptions => {
 }
 
 const S = {
+    HeaderTitle: styled(Text)`
+        color: ${Palette.HeaderColor};
+        font-size: 20px;
+        font-variant: small-caps;
+        font-weight: 600;
+        text-transform: capitalize;
+    `,
+
     HeaderButtonCont: styled(View)`
         flex-direction: row;
     `,
