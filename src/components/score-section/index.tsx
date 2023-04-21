@@ -33,7 +33,7 @@ export default function ScoreSection({ section }: ScoreSectionProps): JSX.Elemen
     return (
         <S.Container>
             <S.Header style={{ flexDirection: Rtl() ? "row-reverse" : "row" }}>
-                <S.Title>{i18n.t(section)}</S.Title>
+                <S.Title style={{ textAlign: Rtl() ? "right" : "left" }}>{i18n.t(section)}</S.Title>
                 <View>
                     <S.ScoreText style={{ textAlign: Rtl() ? "left" : "right" }}>
                         {Rtl()
