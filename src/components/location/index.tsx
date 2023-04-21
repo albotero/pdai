@@ -12,8 +12,7 @@ import {
 import { CapitalizeSentence, FirstLetter } from "@common/functions"
 import i18n, { Rtl } from "@common/localization"
 import { Palette } from "@common/palette"
-import { PdaiContext } from "@screens/pdai"
-import { PdaiContextType, PdaiData, PdaiDataInterface, SelectedLocations } from "@screens/pdai/context"
+import { PdaiContext, PdaiContextType, PdaiData, PdaiDataInterface, SelectedLocations } from "@screens/pdai/context"
 import * as S from "./styles"
 
 interface LocationProps {

@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native"
 import Animated, { FadeIn } from "react-native-reanimated"
 import Rive, { Fit } from "rive-react-native"
 
-import { AppContext, AppContextType } from "../../../App"
 import i18n, { Languages } from "@common/localization"
 import { Palette } from "@common/palette"
+import { AppContext, AppContextType } from "@root/App-context"
 
 import * as S from "./styles"
 
@@ -30,11 +30,6 @@ export default function Lang(): JSX.Element {
     const [state, setState] = useState<boolean>(false)
     const { changeLang: changeLang } = useContext(AppContext) as AppContextType
 
-    const updateLang = (iso: string) => {
-        if (changeLang) changeLang(iso)
-        setState(!state)
-    }
-
     return (
         <S.Container>
             <Animated.View entering={FadeIn.duration(2000)} style={{ flex: 1 }}>
@@ -58,7 +53,10 @@ export default function Lang(): JSX.Element {
                                         flag={data.translation.languageFlag}
                                         langName={data.translation.languageName}
                                         selected={i18n.language == iso}
-                                        updateLang={() => updateLang(iso)}
+                                        updateLang={() => {
+                                            if (changeLang) changeLang(iso)
+                                            setState(!state)
+                                        }}
                                     />
                                 )
                         })}

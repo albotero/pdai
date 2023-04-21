@@ -1,3 +1,5 @@
+import { createContext } from "react"
+
 export interface PdaiData {
     text: string
     value: number
@@ -83,3 +85,5 @@ export const SelectedLocations: Record<string, number | null> = {
     scalp: null,
     mucousMembrane: null,
 }
+
+export const PdaiContext = createContext<PdaiContextType | null>(null)

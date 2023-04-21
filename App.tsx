@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { useState } from "react"
 import { Text, TouchableOpacity, View } from "react-native"
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackNavigationOptions } from "@react-navigation/native-stack"
@@ -6,16 +6,11 @@ import styled from "styled-components"
 
 import i18n, { GetLanguage, SetLanguage } from "@common/localization"
 import { Palette, TextShadow } from "@common/palette"
+import { AppContext } from "@root/App-context"
 import About from "@screens/about"
 import Lang from "@screens/lang"
 import Pdai from "@screens/pdai"
 import Splash from "@screens/splash"
-
-export type AppContextType = {
-    changeLang?: (iso: string) => void
-}
-
-export const AppContext = createContext<AppContextType | null>(null)
 
 export type RootStackParamList = {
     PDAI: undefined

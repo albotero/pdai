@@ -1,15 +1,13 @@
 import React from "react"
-import { createContext, useState } from "react"
+import { useState } from "react"
 import { ScrollView } from "react-native"
 import { FadeIn } from "react-native-reanimated"
 import { useFocusEffect } from "@react-navigation/native"
 
 import Score from "@components/score"
 import ScoreSection from "@components/score-section"
-import { PdaiContextType, PdaiDataInterface, PdaiSections, SelectedLocations } from "./context"
+import { PdaiContext, PdaiDataInterface, PdaiSections, SelectedLocations } from "./context"
 import * as S from "./styles"
-
-export const PdaiContext = createContext<PdaiContextType | null>(null)
 
 export default function Pdai(): JSX.Element {
     const [pdaiData, setPdaiData] = useState<PdaiDataInterface[]>(PdaiSections)

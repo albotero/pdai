@@ -4,7 +4,9 @@ import { NativeModules, Platform } from "react-native"
 import AsyncStorage from "@react-native-community/async-storage"
 
 export const GetLanguage = async () =>
-    await AsyncStorage.getItem("Language", (error: any, result: any) => result || console.log(JSON.stringify(error)))
+    await AsyncStorage.getItem("Language", (error: any, result: any) =>
+        error ? console.log("ERROR Localization =>", JSON.stringify(error)) : result
+    )
 
 export const SetLanguage = async (iso: string) => await AsyncStorage.setItem("Language", iso)
 
