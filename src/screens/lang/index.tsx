@@ -11,18 +11,21 @@ import * as S from "./styles"
 
 interface LanguageButtonProps {
     flag: string
-    langName: string
+    text: string
+    translation?: string
     selected: boolean
     updateLang: () => void
 }
 
-function LanguageButton({ flag, langName, selected, updateLang }: LanguageButtonProps) {
+function LanguageButton({ flag, text, translation, selected, updateLang }: LanguageButtonProps) {
     return (
-        <S.LanguageButton onPress={updateLang} style={selected && Style.selected}>
-            <S.LanguageText>
-                {flag}&nbsp;&nbsp;{langName}
-            </S.LanguageText>
-        </S.LanguageButton>
+        <S.Button onPress={updateLang} style={selected && Style.selected}>
+            <S.Language>{flag}</S.Language>
+            <S.Language>
+                {text}
+                {translation && <S.Translation> [{translation}]</S.Translation>}
+            </S.Language>
+        </S.Button>
     )
 }
 
@@ -46,13 +49,15 @@ export default function Lang(): JSX.Element {
                     <S.Grid>
                         {Object.keys(Languages).map((iso: string) => {
                             const data = i18n.getDataByLanguage(iso)
-                            if (data)
+                            const data_cur = i18n.getDataByLanguage(i18n.language)
+                            if (data && data_cur)
                                 return (
                                     <LanguageButton
                                         key={iso}
                                         flag={data.translation.languageFlag}
-                                        langName={data.translation.languageName}
                                         selected={i18n.language == iso}
+                                        text={data.names[iso]}
+                                        translation={i18n.language == iso ? undefined : data_cur.names[iso]}
                                         updateLang={() => {
                                             if (changeLang) changeLang(iso)
                                             setState(!state)

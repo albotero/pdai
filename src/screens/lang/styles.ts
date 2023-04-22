@@ -32,19 +32,25 @@ export const Grid = styled(View)`
     padding: 10px 0 30px 0;
 `
 
-export const LanguageButton = styled(TouchableOpacity)`
+export const Button = styled(TouchableOpacity)`
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    width: 48%;
+    width: 46%;
     margin: 3px 2px;
 `
 
-export const LanguageText = styled(Text)`
-    padding: 7px 0;
+export const Language = styled(Text)`
+    padding: 7px 2px;
     text-transform: capitalize;
     color: black;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 400;
     ${TextShadow(Palette.BackColorApp, "0", "10px")}
+`
+
+export const Translation = styled(Text)`
+    text-transform: capitalize;
+    font-size: 12px;
 `
