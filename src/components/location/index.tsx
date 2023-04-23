@@ -137,11 +137,12 @@ interface OptionsProps {
 function Options({ property, options, selected, update }: OptionsProps): JSX.Element {
     return (
         <View>
-            <S.OptionsTitle>{i18n.t(property)}</S.OptionsTitle>
+            <S.OptionsTitle style={{ textAlign: Rtl() ? "right" : "left" }}>{i18n.t(property)}</S.OptionsTitle>
             {options.map((data) => (
                 <TouchableOpacity key={data.value} onPress={() => update(data.value)}>
                     <S.Option
-                        style={
+                        style={[
+                            { textAlign: Rtl() ? "right" : "left" },
                             selected == data.value && {
                                 backgroundColor: Palette.BackColorC,
                                 color: Palette.HeaderColor,
@@ -152,8 +153,8 @@ function Options({ property, options, selected, update }: OptionsProps): JSX.Ele
                                 shadowOffset: { width: 2, height: 2 },
                                 shadowRadius: 2,
                                 elevation: 2,
-                            }
-                        }
+                            },
+                        ]}
                     >
                         {CapitalizeSentence(i18n.t(data.text))}
                     </S.Option>
